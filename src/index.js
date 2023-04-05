@@ -54,6 +54,13 @@ class RedisStore {
     }
 
     this.prefix = prefix || 'cacheman:'
+    this.client.on('connect', function () {
+		  console.log("Recacheman redis connected")
+	  });
+
+    this.client.on('error', function (err) {
+      console.error("Recacheman redis error", error);
+  	});
   }
 
   /**
